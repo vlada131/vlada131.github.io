@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+
+
+</head>
+
+<body>
+
+    <audio id="player">
+        
+        <source src="assets/applause3.mp3" type="audio/mp3">
+
+    </audio>
+
+<h1 class="pitanje">Да ли ћете гласати за председника Вучића?</h1>
+
+	
+<div><button type="button" onclick="document.getElementById('player').play()" class="btn btn-primary">Да</button></div>
+<div><button type="button" class="btn btn-danger">Не</button></div>
+
+<script type="text/javascript">
+	
+var width = $(window).width() - 800;
+    var height = $(window).height() - 300;
+
+function run() {
+    var top = Math.random() * height;
+    var left = Math.random() * width;
+    $('.btn-danger').css('top', top + 'px').css('left', left + 'px');
+}
+
+$(document).ready(function() {
+    $('.btn-danger').mouseover(run);
+    $('.btn-danger').mousemove(run);
+});
+
+    $(".btn-primary").click(function(){
+
+        $(".pitanje").html("Хвала што сте нам поверили ваш глас! :)").css('color', 'red');
+
+        setTimeout(function() {
+            location.reload();
+        }, 5000);
+    });
+
+     var time = new Date().getTime();
+     $(document.body).bind("mousemove keypress", function(e) {
+         time = new Date().getTime();
+     });
+
+
+     function refresh() {
+         if(new Date().getTime() - time >= 7000) 
+             window.location.reload(true);
+         else 
+             setTimeout(refresh, 7000);
+     }
+
+     setTimeout(refresh, 7000);
+
+
+</script>
+
+</body>
+</html>
